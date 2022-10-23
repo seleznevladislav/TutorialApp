@@ -1,9 +1,9 @@
-Ext.define('TutorialApp.store.Personnel', {
+Ext.define('TutorialApp.store.Store', {
     extend: 'Ext.data.Store',
 
-    alias: 'store.personnel',
+    alias: 'store.Store',
 
-    model: 'TutorialApp.model.Personnel',
+    model: 'TutorialApp.model.Store',
 
     data: { items: [
         { id: 1, name: "Notebool Lenovo", description: "Тип матрицы экрана: TFT TN. Процессор: AMD Athlon. Количество ядер процессора: 2. Серия процессора.: 3050U.", cost: 100, count: 2 },
