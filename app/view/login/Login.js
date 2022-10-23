@@ -1,7 +1,6 @@
 Ext.define('TutorialApp.view.login.Login', {
 	extend: 'Ext.window.Window',
 	xtype: 'login',
-
 	requires: [
 			'TutorialApp.view.login.LoginController',
 			'Ext.form.Panel'

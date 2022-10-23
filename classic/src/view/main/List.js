@@ -9,16 +9,18 @@ Ext.define('TutorialApp.view.main.List', {
         'TutorialApp.store.Personnel'
     ],
 
-    title: 'Personnel',
+    title: 'Список товаров',
 
     store: {
         type: 'personnel'
     },
-
+		padding: 20,
     columns: [
-        { text: 'Name',  dataIndex: 'name' },
-        { text: 'Email', dataIndex: 'email', flex: 1 },
-        { text: 'Phone', dataIndex: 'phone', flex: 1 }
+        { text: 'ID',  dataIndex: 'id' },
+        { text: 'Имя', dataIndex: 'name', flex: 1 },
+        { text: 'Описание', dataIndex: 'description', flex: 1 },
+        { text: 'Цена', dataIndex: 'cost', flex: 1 },
+        { text: 'Кол-во', dataIndex: 'count', flex: 1 }
     ],
 
     listeners: {

@@ -40,7 +40,7 @@ Ext.define('TutorialApp.Application', {
 			// This ternary operator determines the value of the TutorialLoggedIn key.
 			// If TutorialLoggedIn isn't true, we display the login window,
 			// otherwise, we display the main view
-			Ext.widget(loggedIn ? 'login' : 'app-main');
+			Ext.widget(loggedIn ? 'app-main' : 'login');
 
 	}
 });
