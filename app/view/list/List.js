@@ -111,7 +111,12 @@ Ext.define('TutorialApp.view.main.List', {
 				{
 					text: 'Кол-во',
 					dataIndex: 'count',
-					flex: 1
+					flex: 1,
+					renderer: function(value, meta) 
+					{
+						if(parseInt(value) === 0) meta.style = "background-color:red;";
+						return value;
+					}
 				}
 			],
 			listeners: {

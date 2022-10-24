@@ -11,7 +11,7 @@ Ext.define('TutorialApp.view.form.Form', {
 	bodyPadding: 10,
 	title: 'Карточка товара',
 
-	closable: true,
+	closable: false,
 	autoShow: true,
 
 	items: {
