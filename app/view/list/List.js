@@ -9,11 +9,6 @@ Ext.define('TutorialApp.view.main.List', {
 			title: 'Список товаров',
 			padding: '20, 10 0 10',
 			bodyPadding: 5,
-			// plugins: {
-			// 		'ux-panelfielddragzone': {
-			// 				ddGroup: 'dd-field-to-grid'
-			// 		}
-			// },
 			defaults: {
 				labelWidth: 150
 			},
@@ -28,8 +23,8 @@ Ext.define('TutorialApp.view.main.List', {
 						{
 							let value = Ext.getCmp('searchId').value
 						
-							let dataIdx = Ext.getCmp('Gridd').columns[0].dataIndex
-							Ext.getCmp('Gridd').getStore().addFilter(
+							let dataIdx = Ext.getCmp('gridPanel-1').columns[0].dataIndex
+							Ext.getCmp('gridPanel-1').getStore().addFilter(
 								[{
 								id: "filter-" + dataIdx,
 								filterFn: function (record) {
@@ -41,7 +36,7 @@ Ext.define('TutorialApp.view.main.List', {
 								}])
 							if (value === '') 
 							{
-								Ext.getCmp('Gridd').getStore().filters.removeAll()
+								Ext.getCmp('gridPanel-1').getStore().filters.removeAll()
 							}
 						}
 					}
@@ -56,8 +51,8 @@ Ext.define('TutorialApp.view.main.List', {
 						if (e.getKey() === e.ENTER)
 						{
 							let value = Ext.getCmp('searchDescription').value
-							let dataIdx = Ext.getCmp('Gridd').columns[2].dataIndex
-							Ext.getCmp('Gridd').getStore().addFilter([
+							let dataIdx = Ext.getCmp('gridPanel-1').columns[2].dataIndex
+							Ext.getCmp('gridPanel-1').getStore().addFilter([
 							{
 								description: "filter-" + dataIdx,
 								filterFn: function (record) 
@@ -69,7 +64,7 @@ Ext.define('TutorialApp.view.main.List', {
 								}
 							}])
 							if (value === '') {
-								Ext.getCmp('Gridd').getStore().filters.removeAll()
+								Ext.getCmp('gridPanel-1').getStore().filters.removeAll()
 							}
 							}
 					}	
@@ -83,13 +78,13 @@ Ext.define('TutorialApp.view.main.List', {
 			store: {
 				type: 'Store'
 			},
-			id: 'Gridd',
+			id: 'gridPanel-1',
 			columns: [{
 					text: 'ID',
 					dataIndex: 'id',
 					groupable: true,
 					filter: {},
-					filterType: 'string'
+					filterType: 'string',
 				},
 				{
 					text: 'Имя',

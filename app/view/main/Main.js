@@ -11,9 +11,6 @@ Ext.define('TutorialApp.view.main.Main', {
 
 	controller: 'main',
 	plugins: 'viewport',
-	viewModel: {
-			type: 'main'
-	},
 	title: 'Главное меню',
 
 	    items: [{
