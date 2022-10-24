@@ -2,6 +2,10 @@ Ext.define('TutorialApp.model.Store', {
     extend: 'TutorialApp.model.Base',
 
     fields: [
-        'id', 'name', 'description', 'cost', 'count'
+        {id:'id', type: 'int'}, 
+				{name: 'name', type: 'string'},
+				{description:'description', type: 'string'},
+				{cost: 'cost', type: 'int'},
+				{count: 'count', type: 'int'}
     ]
 });

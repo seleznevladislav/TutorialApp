@@ -4,7 +4,8 @@ Ext.define('TutorialApp.view.main.MainController', {
 	alias: 'controller.main',
 
 	onItemSelected: function (sender, record) {
-			// Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+			console.log(sender.selected.items[0].data)
+			
 			Ext.create({
 				xtype: 'form-panel'
 			});

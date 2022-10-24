@@ -20,11 +20,45 @@ Ext.define('TutorialApp.view.main.List', {
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'ID:',
-				// value: 'test'
+				listeners: {
+					change: function (field, value) {
+						let dataIdx = Ext.getCmp('Gridd').columns[0].dataIndex
+						Ext.getCmp('Gridd').getStore().addFilter(
+							[{
+							id: "filter-" + dataIdx,
+							filterFn: function (record) {
+								if (value == record.get(dataIdx)) 
+								{
+									return true
+								}
+							}
+							}])
+						if (value === '') 
+						{
+							Ext.getCmp('Gridd').getStore().filters.removeAll()
+						}
+					}
+				}
 			}, {
 				xtype: 'textfield',
 				fieldLabel: 'Описание:',
-				// value: ''
+				listeners: {
+					change: function (field, value) {
+						let dataIdx = Ext.getCmp('Gridd').columns[2].dataIndex
+						Ext.getCmp('Gridd').getStore().addFilter([{
+							description: "filter-" + dataIdx,
+							filterFn: function (record) {
+								if (record.data.description.toLowerCase().indexOf(value.toLowerCase()) > -1) 
+								{
+									return true
+								}
+							}
+						}])
+						if (value === '') {
+							Ext.getCmp('Gridd').getStore().filters.removeAll()
+						}
+					}
+				}
 			}]
 		},
 		{
@@ -34,11 +68,12 @@ Ext.define('TutorialApp.view.main.List', {
 			store: {
 				type: 'Store'
 			},
-
+			id: 'Gridd',
 			columns: [{
 					text: 'ID',
 					dataIndex: 'id',
 					groupable: true,
+					filter: {},
 					filterType: 'string'
 				},
 				{
@@ -50,6 +85,7 @@ Ext.define('TutorialApp.view.main.List', {
 					text: 'Описание',
 					dataIndex: 'description',
 					flex: 1,
+					filter: {},
 					filterType: 'string'
 				},
 				{
@@ -67,5 +103,5 @@ Ext.define('TutorialApp.view.main.List', {
 				select: 'onItemSelected'
 			},
 		},
-	]	
+	]
 });
