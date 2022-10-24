@@ -20,44 +20,59 @@ Ext.define('TutorialApp.view.main.List', {
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'ID:',
+				id: 'searchId',
 				listeners: {
-					change: function (field, value) {
-						let dataIdx = Ext.getCmp('Gridd').columns[0].dataIndex
-						Ext.getCmp('Gridd').getStore().addFilter(
-							[{
-							id: "filter-" + dataIdx,
-							filterFn: function (record) {
-								if (value == record.get(dataIdx)) 
-								{
-									return true
-								}
-							}
-							}])
-						if (value === '') 
+					specialkey: function (field, e) 
+					{
+						if (e.getKey() === e.ENTER)
 						{
-							Ext.getCmp('Gridd').getStore().filters.removeAll()
+							let value = Ext.getCmp('searchId').value
+						
+							let dataIdx = Ext.getCmp('Gridd').columns[0].dataIndex
+							Ext.getCmp('Gridd').getStore().addFilter(
+								[{
+								id: "filter-" + dataIdx,
+								filterFn: function (record) {
+									if (value == record.get(dataIdx)) 
+									{
+										return true
+									}
+								}
+								}])
+							if (value === '') 
+							{
+								Ext.getCmp('Gridd').getStore().filters.removeAll()
+							}
 						}
 					}
 				}
 			}, {
 				xtype: 'textfield',
 				fieldLabel: 'Описание:',
+				id:'searchDescription',
 				listeners: {
-					change: function (field, value) {
-						let dataIdx = Ext.getCmp('Gridd').columns[2].dataIndex
-						Ext.getCmp('Gridd').getStore().addFilter([{
-							description: "filter-" + dataIdx,
-							filterFn: function (record) {
-								if (record.data.description.toLowerCase().indexOf(value.toLowerCase()) > -1) 
+					specialkey: function (field, e) 
+					{
+						if (e.getKey() === e.ENTER)
+						{
+							let value = Ext.getCmp('searchDescription').value
+							let dataIdx = Ext.getCmp('Gridd').columns[2].dataIndex
+							Ext.getCmp('Gridd').getStore().addFilter([
+							{
+								description: "filter-" + dataIdx,
+								filterFn: function (record) 
 								{
-									return true
+									if (record.data.description.toLowerCase().indexOf(value.toLowerCase()) > -1) 
+									{
+										return true
+									}
 								}
+							}])
+							if (value === '') {
+								Ext.getCmp('Gridd').getStore().filters.removeAll()
 							}
-						}])
-						if (value === '') {
-							Ext.getCmp('Gridd').getStore().filters.removeAll()
-						}
-					}
+							}
+					}	
 				}
 			}]
 		},
